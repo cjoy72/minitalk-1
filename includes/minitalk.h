@@ -13,6 +13,7 @@
 # define ERROR_SIGNAL 5
 # define ERROR_KILL 6
 
+void ft_error(int error_code);
 int ft_atoi(const char *nptr);
 void ft_putchar_fd(char c, int fd);
 void ft_putendl_fd(char *s, int fd);

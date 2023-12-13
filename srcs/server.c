@@ -4,6 +4,7 @@ static void ft_btoa(int c);
 
 int main(int argc, char *argv[])
 {
+    (void)argv;
     if (argc != 1)
         ft_error(ERROR_ARGS);
     ft_putnbr_fd(getpid(), 1);

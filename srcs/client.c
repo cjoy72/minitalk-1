@@ -16,6 +16,8 @@ int main(int argc, char *argv[])
         ft_atob(pid, argv[2][i]);
         i++;
     }
+    if (argv[2][i - 1] != '\n')
+        ft_atob(pid, '\n');
 }
 
 static void ft_atob(int pid, char c)
