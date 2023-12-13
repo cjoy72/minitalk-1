@@ -1,6 +1,6 @@
 #include "../includes/minitalk.h"
 
-void ft_btoa(int c);
+static void ft_btoa(int c);
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     }
 }
 
-void ft_btoa(int signal)
+static void ft_btoa(int signal)
 {
     static int c;
     static int bits;
