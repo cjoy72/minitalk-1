@@ -1,5 +1,6 @@
 #include "../includes/minitalk.h"
 
+static void ft_check_args(int argc, char *argv[]);
 static void ft_atob(int pid, char c);
 
 int main(int argc, char *argv[])
@@ -7,8 +8,7 @@ int main(int argc, char *argv[])
     int i;
     int pid;
 
-    if (argc != 3)
-        ft_error(ERROR_ARGS);
+    ft_check_args(argc, argv);
     i = 0;
     pid = ft_atoi(argv[1]);
     while (argv[2][i])
@@ -18,6 +18,28 @@ int main(int argc, char *argv[])
     }
     if (argv[2][i - 1] != '\n')
         ft_atob(pid, '\n');
+    return (0);
+}
+
+static void ft_check_args(int argc, char *argv[])
+{
+    int i;
+    int j;
+
+    if (argc != 3)
+        ft_error(ERROR_ARGS);
+    i = 0;
+    while (argv[1][i])
+    {
+        j = 0;
+        while (argv[1][j])
+        {
+            if (!ft_isdigit(argv[1][j]))
+                ft_error(ERROR_PID);
+            j++;
+        }
+        i++;
+    }
 }
 
 static void ft_atob(int pid, char c)
@@ -28,10 +50,16 @@ static void ft_atob(int pid, char c)
     while (bits < 8)
     {
         if (c & (1 << bits))
-            kill(pid, SIGUSR1);
+        {
+            if (kill(pid, SIGUSR1) == -1)
+                ft_error(ERROR_KILL);
+        }
         else
-            kill(pid, SIGUSR2);
-        usleep(500);
+        {
+            if (kill(pid, SIGUSR2) == -1)
+                ft_error(ERROR_KILL);
+        }
+        usleep(100);
         bits++;
     }
 }

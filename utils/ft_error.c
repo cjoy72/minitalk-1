@@ -1,6 +1,6 @@
 #include "../includes/minitalk.h"
 
-void ft_error(int error_code)
+void    ft_error(int error_code)
 {
     if (error_code == ERROR_ARGS)
         ft_putendl_fd("Error: wrong number of arguments", 2);
@@ -8,8 +8,6 @@ void ft_error(int error_code)
         ft_putendl_fd("Error: invalid PID", 2);
     else if (error_code == ERROR_CHAR)
         ft_putendl_fd("Error: invalid character", 2);
-    else if (error_code == ERROR_MALLOC)
-        ft_putendl_fd("Error: malloc failed", 2);
     else if (error_code == ERROR_SIGNAL)
         ft_putendl_fd("Error: signal failed", 2);
     else if (error_code == ERROR_KILL)
