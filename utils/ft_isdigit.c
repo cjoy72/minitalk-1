@@ -1,6 +1,6 @@
 #include "../includes/minitalk.h"
 
-int is_digit(char c)
+int ft_isdigit(char c)
 {
     return (c >= '0' && c <= '9');
 }

@@ -1,7 +1,7 @@
 #include "../includes/minitalk.h"
 
 static void ft_check_args(int argc, char *argv[]);
-static void ft_btoa(int pid, int c);
+static void ft_atob(int pid, int c);
 static void ft_receive_confirmation(int signal);
 
 int confirmation_received = 0;
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         ft_error(ERROR_SIGNAL);
     while (argv[2][i])
     {
-        ft_btoa(pid, argv[2][i]);
+        ft_atob(pid, argv[2][i]);
         i++;
     }
     if (argv[2][i - 1] != '\n')
@@ -50,10 +50,11 @@ static void ft_check_args(int argc, char *argv[])
     }
 }
 
-static void ft_btoa(int pid, int c)
+static void ft_atob(int pid, int c)
 {
     int bits;
 
+    bits = 0;
     while (bits < 8)
     {
         if (c & (1 << bits))

@@ -12,7 +12,7 @@
 # define ERROR_KILL 5
 
 void    ft_error(int error_code);
-int     ft_isdigit(int c);
+int     ft_isdigit(char c);
 int     ft_atoi(const char *nptr);
 void    ft_putchar_fd(char c, int fd);
 void    ft_putendl_fd(char *s, int fd);

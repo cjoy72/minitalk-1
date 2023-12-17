@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     ft_putnbr_fd(getpid(), 1);
     ft_putchar_fd('\n', 1);
     action.sa_sigaction = ft_btoa;
-    action.sa_flag = SA_SIGINFO | SA_RESTART;
-    sigemptyset(action.sa_mask);
+    action.sa_flags = SA_SIGINFO | SA_RESTART;
+    sigemptyset(&action.sa_mask);
     while (1)
     {
         if (sigaction(SIGUSR1, &action, NULL) == -1)
@@ -36,6 +36,7 @@ static void ft_btoa(int signal, siginfo_t *info, void *context)
     static int  c;
     static int  bits;
 
+    (void)context;
     if (signal == SIGUSR1)
         c |= (1 << bits);
     bits++;
