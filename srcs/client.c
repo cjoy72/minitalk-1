@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egualand <egualand@student.42firenze.it    +#+  +:+       +#+        */
+/*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:30:27 by egualand          #+#    #+#             */
-/*   Updated: 2023/12/27 13:46:23 by egualand         ###   ########.fr       */
+/*   Updated: 2024/05/19 23:46:40 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	main(int argc, char *argv[])
 	pid = ft_atoi(argv[1]);
 	while (argv[2][i])
 	{
-		ft_atob(pid, argv[2][i]);
+		if (!((argv[2][i] > 0 && argv[2][i] < 8)
+			|| argv[2][i] == 127
+			|| (argv[2][i] > 13 && argv[2][i] < 32)))
+			ft_atob(pid, argv[2][i]);
 		i++;
 	}
 	if (argv[2][i - 1] != '\n')
